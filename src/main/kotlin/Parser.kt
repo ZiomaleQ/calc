@@ -8,13 +8,8 @@ class Parser(private val code: MutableList<Token>) {
     lastToken = getEOT()
     val output = mutableListOf<Node>()
     
-    try {
-      while (code.isNotEmpty()) {
-        output.add(node())
-      }
-    } catch (err: Error) {
-      println(code.take(2))
-      println(err.message)
+    while (code.isNotEmpty()) {
+      output.add(node())
     }
     
     return output

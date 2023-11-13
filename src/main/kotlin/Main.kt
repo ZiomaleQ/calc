@@ -32,15 +32,19 @@ fun main() {
       }
     }
     
-    val tokens = scanTokens(input)
-    
-    val expressions = Parser(tokens).parse()
-    
-    if (expressions.size == 1) {
-      val output = expressions[0].calc()
-      println(output.prettyPrint())
-    } else {
-      println("ERROR: More than one expression?")
+    try {
+      val tokens = scanTokens(input)
+      
+      val expressions = Parser(tokens).parse()
+      
+      if (expressions.size == 1) {
+        val output = expressions[0].calc()
+        println(output.prettyPrint())
+      } else {
+        println("ERROR: More than one expression?")
+      }
+    } catch(err: RuntimeException) {
+      println("ERROR: Something went wrong with the input")
     }
   }
 }
