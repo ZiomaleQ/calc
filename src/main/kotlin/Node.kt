@@ -25,7 +25,12 @@ class BinaryNode(var op: String, var left: Node, var right: Node) : Node {
   override fun plus(other: Node): Node = calc() + other
   override fun minus(other: Node): Node = calc() - other
   override fun times(other: Node): Node = calc() * other
-  override fun div(other: Node): Node = calc() / other
+  override fun div(other: Node): Node {
+    if (other is ConstNode && other.expr.toDouble() == 0.0) {
+      error("Cannot divide by 0 (zero)")
+    }
+    return calc() / other
+  }
   
   override fun pow(other: Node): Node {
     val calculatedExpr = calc()
@@ -413,6 +418,10 @@ class SymbolNode(private var symbol: String, private var expression: MutableList
       
       if (calculatedExpr !is ConstNode) {
         error("Not calculated expression cant be used")
+      } else {
+        if(calculatedExpr.expr.toDouble() < 0) {
+          error("Negative square roots are not supported")
+        }
       }
       
       ConstNode.numberToNode(sqrt(calculatedExpr.expr.toDouble()))
@@ -436,7 +445,7 @@ class SymbolNode(private var symbol: String, private var expression: MutableList
         error("Not calculated expression cant be used")
       }
       
-      ConstNode.numberToNode(log(calculatedExpr.expr.toDouble(), calculatedSecond.expr.toDouble()))
+      ConstNode.numberToNode(log(calculatedSecond.expr.toDouble(), calculatedExpr.expr.toDouble()))
     }
     
     "pi" -> ConstNode.numberToNode(Math.PI)

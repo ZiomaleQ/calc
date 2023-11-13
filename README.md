@@ -21,4 +21,4 @@ Supports:
 Examples:
 -  powers - `2^(3/2)`
 -  functions - `sin(3/2*pi)`
--  logarithm - `log(32)(2)` - log(32) = 5
+-  logarithm - `log(2)(32)` - log 2 from 32 = 5
