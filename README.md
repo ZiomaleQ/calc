@@ -6,12 +6,19 @@ Supports:
 - - `e` - euler constant
   - `pi` - pi constant
 - Functions:
-- - `sin`, `cos`, `ctg`, `tg` - trygonometric
+- - `sin`, `cos`, `ctg`, `tg` - trygonometric (radians)
   - `log`, `ln` - logarithms
   - `sqrt` - Square root
 - Operators:
 - - `+`, `-`, `/`, `*` - standard math
   - `|value|` - absolute value
   - `^` - power
+  - `()` parenthasis
 - Settings:
 - - Fixed precision or automatic
+
+
+Examples:
+-  powers - `2^(3/2)`
+-  functions - `sin(3/2*pi)`
+-  logarithm - `log(32)(2)` - log(32) = 5
