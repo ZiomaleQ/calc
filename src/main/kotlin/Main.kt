@@ -44,7 +44,8 @@ fun main() {
         println("ERROR: More than one expression?")
       }
     } catch(err: RuntimeException) {
-      println("ERROR: Something went wrong with the input")
+      
+      println("ERROR: Something went wrong with the input (${err.message})")
     }
   }
 }

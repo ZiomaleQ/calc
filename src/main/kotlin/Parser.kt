@@ -38,6 +38,8 @@ class Parser(private val code: MutableList<Token>) {
       consume("RIGHT_PAREN", "Expect ')' after expression.")
     }
     
+    match("MINUS") -> BinaryNode("MINUS", ConstIntegerNode(0), rest())
+    
     match("MOD") -> ModuleNode(node()).also {
       consume("MOD", "Expected '|' after expression")
     }
